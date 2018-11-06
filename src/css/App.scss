@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-//@import "./margins-and-paddings";
+@import "./margins-and-paddings";
 @import "./container";
 
 body {
@@ -15,4 +15,10 @@ body {
 
 .text-center {
   text-align: center !important
+}
+
+.nav-bar-title {
+  font-weight: 100;
+  font-size: 1.3em;
+  letter-spacing: .1em;
 }
