@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
 import {withStyles} from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -6,7 +6,10 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
+import HomeIcon from '@material-ui/icons/Home'
+import {Link} from "react-router-dom"
+// import LinearProgress from "@material-ui/core/LinearProgress"
+
 
 const styles = {
   root: {
@@ -19,30 +22,35 @@ const styles = {
   menuButton: {
     marginLeft: -12,
     marginRight: 20,
-  },
+  }
 }
 
 function Navbar(props) {
   const {classes} = props
+  // const {loading} = props
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <div className="container">
-          <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-              <MenuIcon/>
-            </IconButton>
-            <Typography variant="h6" color="inherit" className={classes.grow}>
-              Week3 React - Search github users
-            </Typography>
-            <Button href="https://github.com/HackYourFuture-CPH/React/blob/master/documentation/homework/W4-homework.md"
-                    color="inherit">github question</Button>
-            <Button href="https://github.com/zuhairtaha/w3-react-hw-github-api-users-search"
-                    color="inherit">repo</Button>
-          </Toolbar>
-        </div>
-      </AppBar>
-    </div>
+    <Fragment>
+      {/*{loading && <LinearProgress color="secondary" variant="query" />}*/}
+      <div className={classes.root}>
+        <AppBar position="static">
+          <div className="container">
+            <Toolbar>
+              <IconButton component={Link} to="/" className={classes.menuButton} color="inherit" aria-label="Menu">
+                <HomeIcon/>
+              </IconButton>
+              <Typography variant="h6" color="inherit" className={classes.grow}>
+                Week3 React - Search github users
+              </Typography>
+              <Button target="_blank"
+                      href="https://github.com/HackYourFuture-CPH/React/blob/master/documentation/homework/W4-homework.md"
+                      color="inherit">question</Button>
+              <Button target="_blank" href="https://github.com/zuhairtaha/w3-react-hw-github-api-users-search"
+                      color="inherit">repo</Button>
+            </Toolbar>
+          </div>
+        </AppBar>
+      </div>
+    </Fragment>
   )
 }
 

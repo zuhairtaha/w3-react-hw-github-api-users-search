@@ -11,27 +11,35 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     padding: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 3,
+    paddingRight: theme.spacing.unit * 6,
     paddingBottom: theme.spacing.unit * 3,
+  },
+  userIconGrid: {
+    textAlign: "right"
+  },
+  '@media (max-width: 767px)': {
+    root: {
+      paddingRight: theme.spacing.unit * 3,
+    }
   }
 })
 
 function SearchForm(props) {
-  const {classes, onSearch, onChange,loading} = props
+  const {classes, onSearch, loading} = props
   return (
     <form onSubmit={onSearch}>
       <Paper className={classes.root}>
         <Grid container alignItems="flex-end" spacing={16}>
 
-          <Grid item>
+          <Grid className={classes.userIconGrid} item xs={1}>
             <PermIdentityIcon/>
           </Grid>
 
-          <Grid item xs={12} sm container alignItems="flex-end" spacing={16}>
+          <Grid item xs={11} sm container alignItems="flex-end" spacing={16}>
 
             <Grid item xs container direction="column" spacing={16}>
               <Grid item xs>
-                <TextField onChange={onChange} fullWidth={true} id="input-with-icon-grid"
+                <TextField name="inputSearchValue" fullWidth={true} id="input-with-icon-grid"
                            label="Search for user..."/>
               </Grid>
             </Grid>
@@ -44,6 +52,7 @@ function SearchForm(props) {
             </Grid>
 
           </Grid>
+
         </Grid>
       </Paper>
     </form>
