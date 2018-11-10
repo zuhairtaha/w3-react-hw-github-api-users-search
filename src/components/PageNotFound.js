@@ -1,11 +1,9 @@
 import React from 'react'
+import WarningIcon from '@material-ui/icons/Warning'
 
-const PageNotFound = () => {
-  return (
-    <div>
-      <p>PageNotFound: Path does not exist!!!11!!1</p>
-    </div>
-  )
-}
+const PageNotFound = () => <h3>
+  <WarningIcon/>
+  Page Not Found!
+</h3>
 
 export default PageNotFound

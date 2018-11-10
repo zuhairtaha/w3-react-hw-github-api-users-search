@@ -27,6 +27,7 @@ class App extends Component {
           <div className="container">
             <Switch>
               <Route path="/" component={Home} exact/>
+              <Route path="/w3-react-hw-github-api-users-search" component={Home}/>
               <Route path="/user/:username" component={UserDetails}/>
               <Route component={PageNotFound}/>
             </Switch>
