@@ -1,13 +1,13 @@
 {
-  "main.css": "/w3-react-hw-github-api-users-search/static/css/main.e849ff06.chunk.css",
-  "main.js": "/w3-react-hw-github-api-users-search/static/js/main.80f8f586.chunk.js",
-  "main.js.map": "/w3-react-hw-github-api-users-search/static/js/main.80f8f586.chunk.js.map",
-  "static/js/1.278b04fa.chunk.js": "/w3-react-hw-github-api-users-search/static/js/1.278b04fa.chunk.js",
-  "static/js/1.278b04fa.chunk.js.map": "/w3-react-hw-github-api-users-search/static/js/1.278b04fa.chunk.js.map",
+  "main.css": "/w3-react-hw-github-api-users-search/static/css/main.0499d71c.chunk.css",
+  "main.js": "/w3-react-hw-github-api-users-search/static/js/main.dc78f0a0.chunk.js",
+  "main.js.map": "/w3-react-hw-github-api-users-search/static/js/main.dc78f0a0.chunk.js.map",
+  "static/js/1.e75d66bd.chunk.js": "/w3-react-hw-github-api-users-search/static/js/1.e75d66bd.chunk.js",
+  "static/js/1.e75d66bd.chunk.js.map": "/w3-react-hw-github-api-users-search/static/js/1.e75d66bd.chunk.js.map",
   "runtime~main.js": "/w3-react-hw-github-api-users-search/static/js/runtime~main.ee877fb0.js",
   "runtime~main.js.map": "/w3-react-hw-github-api-users-search/static/js/runtime~main.ee877fb0.js.map",
-  "static/css/main.e849ff06.chunk.css.map": "/w3-react-hw-github-api-users-search/static/css/main.e849ff06.chunk.css.map",
+  "static/css/main.0499d71c.chunk.css.map": "/w3-react-hw-github-api-users-search/static/css/main.0499d71c.chunk.css.map",
   "index.html": "/w3-react-hw-github-api-users-search/index.html",
-  "precache-manifest.0fd1da244c1e7e4123d0eadb150a9241.js": "/w3-react-hw-github-api-users-search/precache-manifest.0fd1da244c1e7e4123d0eadb150a9241.js",
+  "precache-manifest.7587fc3272f8adcc17a8f5a1c0822bd3.js": "/w3-react-hw-github-api-users-search/precache-manifest.7587fc3272f8adcc17a8f5a1c0822bd3.js",
   "service-worker.js": "/w3-react-hw-github-api-users-search/service-worker.js"
 }
