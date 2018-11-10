@@ -21,6 +21,7 @@ class App extends Component {
       return
     }
     this.setState({searchTerm, loading: true})
+    this.props.onLoading(this.state.loading)
     searchUsers(searchTerm)
       .then(users => {
         users.length === 0 && swal("Alert", "No results found!", "warning")
@@ -30,6 +31,7 @@ class App extends Component {
   }
 
   componentDidUpdate = () => {
+
     // this run when states changed: to keep search results when go back
     const users = JSON.stringify(this.state.users)
     localStorage.setItem("users", users)

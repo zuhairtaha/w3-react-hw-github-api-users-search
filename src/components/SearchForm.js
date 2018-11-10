@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper'
 import TextField from '@material-ui/core/TextField'
 import PermIdentityIcon from '@material-ui/icons/PermIdentity'
 import SearchButton from "./SearchButton"
+import Typography from '@material-ui/core/Typography'
 
 const styles = theme => ({
   root: {
@@ -32,7 +33,9 @@ function SearchForm(props) {
         <Grid container alignItems="flex-end" spacing={16}>
 
           <Grid className={classes.userIconGrid} item xs={1}>
-            <PermIdentityIcon/>
+            <Typography>
+              <PermIdentityIcon/>
+            </Typography>
           </Grid>
 
           <Grid item xs={11} sm container alignItems="flex-end" spacing={16}>

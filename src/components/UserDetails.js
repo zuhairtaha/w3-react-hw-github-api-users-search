@@ -9,6 +9,7 @@ import HomeIcon from '@material-ui/icons/Home'
 import LinkIcon from '@material-ui/icons/Link'
 import Badge from '@material-ui/core/Badge'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import Typography from '@material-ui/core/Typography'
 
 const styles = theme => ({
   root: {
@@ -17,7 +18,11 @@ const styles = theme => ({
   userPhoto: {
     maxWidth: "100%",
     borderRadius: theme.spacing.unit * .5
+  },
+  repos: {
+    marginRight: theme.spacing.unit * 2
   }
+
 })
 
 
@@ -28,10 +33,10 @@ class UserDetails extends React.Component {
   }
 
   componentDidMount = async () => {
-    const userLogin = this.props.location.pathname.split("/")[2]
+    const username = this.props.match.params.username
     this.setState({loading: true})
     try {
-      const user = await getUserDetais(userLogin)
+      const user = await getUserDetais(username)
       this.setState({user, loading: false})
     } catch (err) {
       this.setState({loading: false})
@@ -44,20 +49,21 @@ class UserDetails extends React.Component {
     const {loading} = this.state
     return <Paper className={classes.root}>
       {loading && <CircularProgress color="secondary"/>}
-      {message === "Not Found" && loading === false && <p>User not found</p>}
+      {message === "Not Found" && loading === false && <Typography>User not found</Typography>}
       {message !== "Not Found" && loading === false && <Grid container spacing={16}>
         <Grid item md={6}>
           <img className={classes.userPhoto} alt={login} src={`https://avatars0.githubusercontent.com/u/${id}`}/>
         </Grid>
         <Grid item md={6}>
-          <h2>{name}</h2>
+          <Typography variant="h4">{name}</Typography><br/>
 
-
-          {public_repos && <Badge badgeContent={public_repos} color="primary">Repositories &nbsp; </Badge>}
-          {location && <p>Country: {location}</p>}
-          {company && <p>Company: {company}</p>}
-          {bio && <p>Biography: {bio}</p>}
-          <p>Created at: {created_at}</p>
+          {public_repos && <Badge badgeContent={public_repos} color="primary">
+            <Typography className={classes.repos}>Repositories</Typography>
+          </Badge>}
+          {location && <Typography>Country: {location}</Typography>}
+          {company && <Typography>Company: {company}</Typography>}
+          {bio && <Typography>Biography: {bio}</Typography>}
+          <Typography>Created at: {created_at}</Typography>
           <Button variant="contained" size="small" color="secondary" href={html_url}
                   rel="noopener noreferrer" target="_blank">
             <LinkIcon/>&nbsp; github url

@@ -7,8 +7,9 @@ import './css/App.scss'
 import Home from "./components"
 import UserDetails from "./components/UserDetails"
 import PageNotFound from "./components/PageNotFound"
+import CssBaseline from '@material-ui/core/CssBaseline'
 
-const theme = createMuiTheme({
+const light = createMuiTheme({
   palette: {
     primary: {main: '#43a047'},
     secondary: blue,
@@ -18,15 +19,43 @@ const theme = createMuiTheme({
   }
 })
 
+const dark = createMuiTheme({
+  palette: {
+    type: "dark"
+  },
+  typography: {
+    useNextVariants: true,
+  }
+})
+
+
 class App extends Component {
+  state = {
+    theme: dark,
+    loading: false
+  }
+
+  changeTheme = theme => {
+    theme === "light"
+      ? this.setState({theme: light})
+      : this.setState({theme: dark})
+  }
+  loadingHandler = loading => this.setState({loading})
+
+  homeComponent = props =>
+    <Home {...props} onLoading={() => this.loadingHandler}/>
+
+
   render() {
+    const {theme, loading} = this.state
     return (
       <BrowserRouter>
         <MuiThemeProvider theme={theme}>
-          <NavBar/>
+          <CssBaseline/>
+          <NavBar loading={loading} changeTheme={this.changeTheme}/>
           <div className="container">
             <Switch>
-              <Route path="/" component={Home} exact/>
+              <Route path="/" exact render={this.homeComponent}/>
               <Route path="/w3-react-hw-github-api-users-search" component={Home}/>
               <Route path="/user/:username" component={UserDetails}/>
               <Route component={PageNotFound}/>

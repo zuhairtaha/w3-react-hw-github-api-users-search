@@ -8,7 +8,9 @@ import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import HomeIcon from '@material-ui/icons/Home'
 import {Link} from "react-router-dom"
-// import LinearProgress from "@material-ui/core/LinearProgress"
+import ChangeTheme from "./ChangeTheme"
+
+import LinearProgress from "@material-ui/core/LinearProgress"
 
 
 const styles = {
@@ -26,11 +28,11 @@ const styles = {
 }
 
 function Navbar(props) {
-  const {classes} = props
+  const {classes, loading} = props
   // const {loading} = props
   return (
     <Fragment>
-      {/*{loading && <LinearProgress color="secondary" variant="query" />}*/}
+      {loading && <LinearProgress color="secondary" variant="query"/>}
       <div className={classes.root}>
         <AppBar position="static">
           <div className="container">
@@ -39,13 +41,15 @@ function Navbar(props) {
                 <HomeIcon/>
               </IconButton>
               <Typography variant="h6" color="inherit" className={classes.grow}>
-                Week3 React - Search github users
+                Github Users
               </Typography>
               <Button target="_blank"
                       href="https://github.com/HackYourFuture-CPH/React/blob/master/documentation/homework/W4-homework.md"
                       color="inherit">question</Button>
               <Button target="_blank" href="https://github.com/zuhairtaha/w3-react-hw-github-api-users-search"
                       color="inherit">repo</Button>
+
+              <ChangeTheme changeTheme={props.changeTheme}/>
             </Toolbar>
           </div>
         </AppBar>
