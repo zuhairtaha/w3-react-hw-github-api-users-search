@@ -9,7 +9,6 @@ import IconButton from '@material-ui/core/IconButton'
 import HomeIcon from '@material-ui/icons/Home'
 import {Link} from "react-router-dom"
 import ChangeTheme from "./ChangeTheme"
-
 import LinearProgress from "@material-ui/core/LinearProgress"
 
 
@@ -24,6 +23,11 @@ const styles = {
   menuButton: {
     marginLeft: -12,
     marginRight: 20,
+  },
+  loading: {
+    position: "fixed",
+    top: 0,
+    width: "100%"
   }
 }
 
@@ -32,7 +36,7 @@ function Navbar(props) {
   // const {loading} = props
   return (
     <Fragment>
-      {loading && <LinearProgress color="secondary" variant="query"/>}
+      {loading && <LinearProgress className={classes.loading} color="secondary" variant="query"/>}
       <div className={classes.root}>
         <AppBar position="static">
           <div className="container">

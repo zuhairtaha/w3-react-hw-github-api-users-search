@@ -59,8 +59,6 @@ class Home extends Component {
       </Fragment>
     )
   }
-
-
 }
 
 Home.propTypes = {

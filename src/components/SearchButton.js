@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {withStyles} from '@material-ui/core/styles'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import green from '@material-ui/core/colors/green'
+import orange from '@material-ui/core/colors/orange'
 import Button from '@material-ui/core/Button'
 import SearchIcon from '@material-ui/icons/Search'
 
@@ -16,13 +16,13 @@ const styles = theme => ({
     position: 'relative',
   },
   buttonSuccess: {
-    backgroundColor: green[500],
+    backgroundColor: orange[500],
     '&:hover': {
-      backgroundColor: green[700],
+      backgroundColor: orange[700],
     },
   },
   fabProgress: {
-    color: green[500],
+    color: orange[500],
     position: 'absolute',
     top: -6,
     left: -6,
