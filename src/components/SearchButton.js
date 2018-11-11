@@ -30,13 +30,13 @@ const styles = theme => ({
   }
 })
 
-function SearchButton(props) {
+const SearchButton = props => {
   const {loading, classes} = props
 
   return (
     <div className={classes.root}>
       <div className={classes.wrapper}>
-        <Button variant="fab" color="secondary"  type="submit">
+        <Button variant="fab" color="secondary" type="submit">
           <SearchIcon/>
         </Button>
         {loading && <CircularProgress size={68} className={classes.fabProgress}/>}

@@ -3,7 +3,7 @@ import swal from "sweetalert"
 import Grid from '@material-ui/core/Grid'
 import UserItem from "./UserItem"
 
-function SearchResults(props) {
+const SearchResults = props => {
   const {error, users} = props
   error && swal("Error", error.message, "error")
 
@@ -13,8 +13,6 @@ function SearchResults(props) {
         {users && users.map(user => <UserItem key={user.id} user={user}/>)}
       </Grid>
     </div>
-
-
   )
 }
 

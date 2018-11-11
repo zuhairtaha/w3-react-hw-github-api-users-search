@@ -31,7 +31,7 @@ const styles = {
   }
 }
 
-function Navbar(props) {
+const Navbar = props => {
   const {classes, loading} = props
   // const {loading} = props
   return (

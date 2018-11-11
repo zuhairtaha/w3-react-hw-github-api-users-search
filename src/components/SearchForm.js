@@ -25,7 +25,7 @@ const styles = theme => ({
   }
 })
 
-function SearchForm(props) {
+const SearchForm = props => {
   const {classes, onSearch, loading} = props
   return (
     <form onSubmit={onSearch}>

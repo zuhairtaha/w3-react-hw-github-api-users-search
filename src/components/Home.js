@@ -20,6 +20,7 @@ class Home extends Component {
     e.preventDefault()
     const searchTerm = e.target.elements.inputSearchValue.value.trim()
     if (!searchTerm) {
+      onLoading(false)
       swal("Error:", "you didn't enter a user name!", "error")
       return
     }
@@ -37,8 +38,6 @@ class Home extends Component {
     // this run when states changed: to keep search results when go back
     const users = JSON.stringify(this.state.users)
     localStorage.setItem("users", users)
-
-
   }
 
   componentDidMount = () => {
