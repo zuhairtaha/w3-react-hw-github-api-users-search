@@ -10,6 +10,7 @@ import LinkIcon from '@material-ui/icons/Link'
 import Badge from '@material-ui/core/Badge'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Typography from '@material-ui/core/Typography'
+import PropTypes from "prop-types"
 
 const styles = theme => ({
   root: {
@@ -35,9 +36,13 @@ class UserDetails extends React.Component {
   componentDidMount = async () => {
     const username = this.props.match.params.username
     this.setState({loading: true})
+    const {onLoading} = this.props
+    onLoading(true)
     try {
       const user = await getUserDetais(username)
       this.setState({user, loading: false})
+      onLoading(false)
+
     } catch (err) {
       this.setState({loading: false})
     }
@@ -60,7 +65,7 @@ class UserDetails extends React.Component {
           {public_repos && <Badge badgeContent={public_repos} color="primary">
             <Typography className={classes.repos}>Repositories</Typography>
           </Badge>}
-          {location && <Typography>Country: {location}</Typography>}
+          {location && <Typography>Location: {location}</Typography>}
           {company && <Typography>Company: {company}</Typography>}
           {bio && <Typography>Biography: {bio}</Typography>}
           <Typography>Created at: {created_at}</Typography>
@@ -85,4 +90,7 @@ class UserDetails extends React.Component {
   }
 }
 
+UserDetails.propTypes = {
+  onLoading: PropTypes.func.isRequired
+}
 export default withStyles(styles)(UserDetails)

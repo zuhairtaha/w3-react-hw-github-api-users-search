@@ -4,47 +4,39 @@ import {createMuiTheme, MuiThemeProvider} from '@material-ui/core/styles'
 import blue from "@material-ui/core/colors/blue"
 import NavBar from "./components/NavBar"
 import './css/App.scss'
-import Home from "./components"
+import Home from "./components/Home"
 import UserDetails from "./components/UserDetails"
 import PageNotFound from "./components/PageNotFound"
 import CssBaseline from '@material-ui/core/CssBaseline'
 
-const light = createMuiTheme({
-  palette: {
-    primary: {main: '#43a047'},
-    secondary: blue,
-  },
-  typography: {
-    useNextVariants: true,
-  }
-})
-
-const dark = createMuiTheme({
-  palette: {
-    type: "dark"
-  },
-  typography: {
-    useNextVariants: true,
-  }
-})
+const themes = {
+  light: createMuiTheme({
+    palette: {
+      primary: {main: '#43a047'},
+      secondary: blue,
+    },
+    typography: {useNextVariants: true}
+  }),
+  dark: createMuiTheme({
+    palette: {type: "dark"},
+    typography: {useNextVariants: true}
+  })
+}
 
 
 class App extends Component {
   state = {
-    theme: dark,
+    theme: themes.dark,
     loading: false
   }
 
-  changeTheme = theme => {
-    theme === "light"
-      ? this.setState({theme: light})
-      : this.setState({theme: dark})
-  }
+  changeTheme = theme => this.setState({theme: themes[theme]})
+
   loadingHandler = loading => this.setState({loading})
 
-  homeComponent = props =>
-    <Home {...props} onLoading={() => this.loadingHandler}/>
+  homeComponent = props => <Home {...props} onLoading={this.loadingHandler}/>
 
+  userDetailsComponent = props => <UserDetails {...props} onLoading={this.loadingHandler}/>
 
   render() {
     const {theme, loading} = this.state
@@ -55,9 +47,11 @@ class App extends Component {
           <NavBar loading={loading} changeTheme={this.changeTheme}/>
           <div className="container">
             <Switch>
+              <Route path="/w3-react-hw-github-api-users-search" exact render={this.homeComponent}/>
+
               <Route path="/" exact render={this.homeComponent}/>
-              <Route path="/w3-react-hw-github-api-users-search" component={Home}/>
-              <Route path="/user/:username" component={UserDetails}/>
+              <Route path="/user/:username" render={this.userDetailsComponent}/>
+
               <Route component={PageNotFound}/>
             </Switch>
           </div>

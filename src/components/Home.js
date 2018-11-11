@@ -3,9 +3,9 @@ import SearchForm from "./SearchForm"
 import SearchResults from "./SearchResults"
 import {searchUsers} from "../api"
 import swal from "sweetalert"
+import PropTypes from 'prop-types'
 
-
-class App extends Component {
+class Home extends Component {
   state = {
     searchTerm: "",
     loading: false,
@@ -14,6 +14,9 @@ class App extends Component {
   }
 
   SearchHandler = e => {
+    const {onLoading} = this.props
+    onLoading(true)
+
     e.preventDefault()
     const searchTerm = e.target.elements.inputSearchValue.value.trim()
     if (!searchTerm) {
@@ -21,21 +24,23 @@ class App extends Component {
       return
     }
     this.setState({searchTerm, loading: true})
-    this.props.onLoading(this.state.loading)
     searchUsers(searchTerm)
       .then(users => {
         users.length === 0 && swal("Alert", "No results found!", "warning")
         this.setState({users, loading: false})
+        onLoading(false)
       })
       .catch(error => this.setState({error, loading: false}))
   }
 
   componentDidUpdate = () => {
-
     // this run when states changed: to keep search results when go back
     const users = JSON.stringify(this.state.users)
     localStorage.setItem("users", users)
+
+
   }
+
   componentDidMount = () => {
     const users = localStorage.getItem("users")
     this.setState({users: JSON.parse(users)})
@@ -54,6 +59,12 @@ class App extends Component {
       </Fragment>
     )
   }
+
+
 }
 
-export default App
+Home.propTypes = {
+  onLoading: PropTypes.func.isRequired
+}
+
+export default Home
