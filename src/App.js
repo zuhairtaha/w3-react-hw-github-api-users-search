@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {HashRouter, Route, Switch} from 'react-router-dom'
 import {createMuiTheme, MuiThemeProvider} from '@material-ui/core/styles'
 import blue from "@material-ui/core/colors/blue"
 import NavBar from "./components/NavBar"
@@ -41,14 +41,12 @@ class App extends Component {
   render() {
     const {theme, loading} = this.state
     return (
-      <BrowserRouter>
+      <HashRouter>
         <MuiThemeProvider theme={theme}>
           <CssBaseline/>
           <NavBar loading={loading} changeTheme={this.changeTheme}/>
           <div className="container">
             <Switch>
-              <Route path="/w3-react-hw-github-api-users-search" exact render={this.homeComponent}/>
-
               <Route path="/" exact render={this.homeComponent}/>
               <Route path="/user/:username" render={this.userDetailsComponent}/>
 
@@ -56,7 +54,7 @@ class App extends Component {
             </Switch>
           </div>
         </MuiThemeProvider>
-      </BrowserRouter>
+      </HashRouter>
     )
   }
 }
